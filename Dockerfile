@@ -48,7 +48,6 @@ RUN chmod 755 /entrypoint.sh && \
 		libyaml-libyaml-perl \
 		libsub-name-perl && \
 	dpkg -i /tmp/libnet-sdp-perl_0.07-1_all.deb && \
-	apt-get -y autoremove && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
