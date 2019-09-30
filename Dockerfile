@@ -37,7 +37,7 @@ RUN chmod 755 /entrypoint.sh && \
 		libwww-perl \
 		avahi-utils \
 		libio-socket-ssl-perl \
-		mplayer-nogui \
+		mplayer \
 		avahi-daemon && \
 	dpkg -i /tmp/libnet-sdp-perl_0.07-1_all.deb && \
 	apt-get -y autoremove && \
