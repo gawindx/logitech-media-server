@@ -38,7 +38,15 @@ RUN chmod 755 /entrypoint.sh && \
 		avahi-utils \
 		libio-socket-ssl-perl \
 		mplayer \
-		avahi-daemon && \
+		avahi-daemon \
+		libdbi-perl \
+		libev-perl \
+		libxml-parser-perl \
+		libhtml-parser-perl \
+		libjson-xs-perl \
+		libdigest-sha-perl \
+		libyaml-libyaml-perl \
+		libsub-name-perl && \
 	dpkg -i /tmp/libnet-sdp-perl_0.07-1_all.deb && \
 	apt-get -y autoremove && \
 	apt-get clean && \
