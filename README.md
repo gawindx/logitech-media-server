@@ -1,4 +1,5 @@
 # Docker Container for Logitech Media Server
+Forked from https://github.com/larsks/docker-image-logitech-media-server
 
 This is a Docker image for running the Logitech Media Server package
 (aka SqueezeboxServer).
@@ -13,7 +14,7 @@ Run Directly:
                -v /etc/localtime:/etc/localtime:ro \
                -v <local-state-dir>:/srv/squeezebox \
                -v <audio-dir>:/srv/music \
-               larsks/logitech-media-server
+               gawindx/logitech-media-server
 
 
 The web interface runs on port 9000.  If you also want this available
