@@ -44,7 +44,7 @@ RUN chmod 755 /entrypoint.sh && \
 	rm -rf /var/lib/apt/lists/*
 
 COPY avahi-daemon.conf /etc/avahi/avahi-daemon.conf
-ENV LMS_VERSION "7.9.3"
+ENV LMS_VERSION "8.0.0"
 ENV PACKAGE_VERSION_URL=http://www.mysqueezebox.com/update/?version=${LMS_VERSION}&revision=1&geturl=1&os=deb
 
 RUN url=$(curl "$PACKAGE_VERSION_URL" | sed 's/_all\.deb/_amd64\.deb/') && \
