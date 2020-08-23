@@ -1,4 +1,7 @@
 FROM ubuntu:latest
+#For Podman Auto-update
+LABEL io.containers.autoupdate="image"
+
 MAINTAINER Nicolas Decaux <decauxnico@gmail.com>
 #MAINTAINER Lars Kellogg-Stedman <lars@oddbit.com>
 # Forked from https://github.com/larsks/docker-image-logitech-media-server
