@@ -17,6 +17,8 @@ COPY libnet-sdp-perl_0.07-1_all.deb /tmp/libnet-sdp-perl_0.07-1_all.deb
 
 RUN chmod 755 /entrypoint.sh && \
 	chmod 755 /start-squeezebox.sh && \
+	sed -i -e 's/^APT/# APT/' -e 's/^DPkg/# DPkg/' \
+		/etc/apt/apt.conf.d/docker-clean && \
 	apt-get update && \
 	apt-get -y upgrade && \
 	apt-get -y --no-install-recommends install \
@@ -47,11 +49,11 @@ RUN chmod 755 /entrypoint.sh && \
 	rm -rf /var/lib/apt/lists/*
 
 COPY avahi-daemon.conf /etc/avahi/avahi-daemon.conf
-ENV LMS_VERSION "8.2.0"
-ENV PACKAGE_VERSION_URL=http://www.mysqueezebox.com/update/?version=${LMS_VERSION}&revision=1&geturl=1&os=deb
+ENV LMS_VERSION "8.3.0"
+ENV PACKAGE_VERSION_URL=http://www.mysqueezebox.com/update/?version=$LMS_VERSION&revision=1&geturl=1&os=deb
 
-RUN url=$(curl "$PACKAGE_VERSION_URL" | sed 's/_all\.deb/_amd64\.deb/') && \
-	curl -Lsf -o /tmp/logitechmediaserver.deb $url && \
+RUN wget -q -O /tmp/logitechmediaserver.deb \
+		"$(wget -O - -o /dev/null "$PACKAGE_VERSION_URL" | sed 's/_all\.deb/_amd64\.deb/')" && \
 	dpkg -i /tmp/logitechmediaserver.deb && \
 	rm -f /tmp/logitechmediaserver.deb && \
 	apt-get update && \
