@@ -1,4 +1,5 @@
 FROM ubuntu:latest
+
 #For Podman Auto-update
 LABEL io.containers.autoupdate="image"
 
@@ -49,7 +50,7 @@ RUN chmod 755 /entrypoint.sh && \
 	rm -rf /var/lib/apt/lists/*
 
 COPY avahi-daemon.conf /etc/avahi/avahi-daemon.conf
-ENV LMS_VERSION "8.3.0"
+ENV LMS_VERSION "8.4.0"
 ENV PACKAGE_VERSION_URL=http://www.mysqueezebox.com/update/?version=$LMS_VERSION&revision=1&geturl=1&os=deb
 
 RUN wget -q -O /tmp/logitechmediaserver.deb \
